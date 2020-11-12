@@ -1,19 +1,17 @@
-const express = require('express')  //require는 모듈안에 express를 찾아옴
+//const express = require('express')  //require는 모듈안에 express를 찾아옴
+import express from "express"
 const  app = express();
 
 const PORT = 4000;
+// ex)
+// function handleProfile(req, res) {
+//     res.send('your are on my profile')
 
-function handleLisening() {
-    console.log(`Listening on: http://localhost:${PORT}`)
-}
+const handleLisening = () =>  console.log(`Listening on: http://localhost:${PORT}`);  //arrow function
 
-function handleHome(req, res) {
-    res.send('hello from home')
-}
+const  handleHome = (req, res) =>  res.send('hello from my cccc ');
 
-function handleProfile(req, res) {
-    res.send('your are on my profile')
-}
+const  handleProfile = (req, res) =>   res.send('your are on my profile');  
 
 app.get("/", handleHome) ;  //누군가 main url로 접근할 시 handleHome 함수 호출
 
