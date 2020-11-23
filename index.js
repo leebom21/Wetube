@@ -39,7 +39,6 @@ app.use(morgan("dev"));
 app.get("/", middleware,  handleHome) ;  //누군가 main url로 접근할 시 handleHome 함수 호출
 
 app.get("/profile", handleProfile);
- 
 app.listen(PORT, handleLisening);  //포트번호
 
 
