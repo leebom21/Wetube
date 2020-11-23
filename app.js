@@ -4,15 +4,9 @@ import morgan from "morgan";  //logger
 import helmet from "helmet"; // 보안을 위한
 import cookieParser from "cookie-parser";
 import bodyParser, { urlencoded } from "body-parser";
+import {userRouter} from "./router";
 
 const  app = express();
-
-const PORT = 4000;
-// ex)
-// function handleProfile(req, res) {
-//     res.send('your are on my profile')
-
-const handleLisening = () =>  console.log(`Listening on: http://localhost:${PORT}`);  //arrow function
 
 const  handleHome = (req, res) =>  res.send('hello from my cccc ');
 
@@ -34,11 +28,12 @@ app.use(bodyParser.urlencoded({ extended : true}));
 app.use(helmet());
 app.use(morgan("dev"));
 
-
-
-app.get("/", middleware,  handleHome) ;  //누군가 main url로 접근할 시 handleHome 함수 호출
+app.get("/", handleHome) ;  //누군가 main url로 접근할 시 handleHome 함수 호출
 
 app.get("/profile", handleProfile);
-app.listen(PORT, handleLisening);  //포트번호
 
+
+app.use("/user", userRouter);
+
+export default app;
 
